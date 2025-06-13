@@ -3,16 +3,16 @@ services:
   RsyncRonDocker:
   # build from my github repository at github.com/tzom/RsyncRonDocker
     build: github.com/tzom/RsyncRonDocker.git
+    restart: unless-stopped
     environment:
       - SOURCE_DIR=/source
       - DEST_DIR=/destination
     volumes:
-      - volume_source:/source
-      - volume_destination:/destination
-    restart: unless-stopped
+      - PATH_TO_SOURCE_VOLUME_AT_HOST:/source
+      - PATH_TO_DESTINATION_VOLUME_AT_HOST:/destination    
 
 volumes:
-  volume_source:
+  PATH_TO_SOURCE_VOLUME_AT_HOST:
     external: true
-  volume_destination:
+  PATH_TO_DESTINATION_VOLUME_AT_HOST:
     external: true
