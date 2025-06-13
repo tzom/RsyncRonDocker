@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  RsyncRonDocker:
+  # build from my github repository at github.com/tzom/RsyncRonDocker
+    build: github.com/tzom/RsyncRonDocker.git
+    environment:
+      - SOURCE_DIR=/source
+      - DEST_DIR=/destination
+    volumes:
+      - volume_source:/source
+      - volume_destination:/destination
+    restart: unless-stopped
+
+volumes:
+  volume_source:
+    external: true
+  volume_destination:
+    external: true
